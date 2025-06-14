@@ -4,7 +4,7 @@ import { useEffect, useState } from "react";
 
 interface Props {
   address: `0x${string}` | null;
-  triggerReload?: any;
+  triggerReload?: number;
 }
 
 interface Tx {
@@ -40,8 +40,12 @@ export function TransactionHistory({ address, triggerReload }: Props) {
         }
         console.log("first", data);
         setTxs(data.result); // show last 5 txs
-      } catch (err: any) {
-        setError(err.message);
+      } catch (err: unknown) {
+        if (err instanceof Error) {
+          setError(err.message);
+        } else {
+          setError("An unexpected error occurred");
+        }
       } finally {
         setLoading(false);
       }

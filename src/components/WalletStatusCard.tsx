@@ -42,7 +42,7 @@ export default function WalletStatusCard() {
   // Handle wallet & network changes
   useEffect(() => {
     if (typeof window === "undefined") return;
-    const { ethereum } = window as any;
+    const { ethereum } = window;
     if (!ethereum || !ethereum.on) return;
 
     const handleAccountsChanged = (accounts: string[]) => {

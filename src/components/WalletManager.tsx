@@ -12,7 +12,7 @@ export default function WalletManager() {
   useEffect(() => {
     if (isConnected && address) setWallet(address, true);
     else resetWallet();
-  }, [isConnected, address]);
+  }, [isConnected, address, setWallet, resetWallet]);
 
   return null;
 }
